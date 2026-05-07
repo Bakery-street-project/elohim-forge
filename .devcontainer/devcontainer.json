@@ -1,25 +1,45 @@
 {
-  "name": "Python 3.12 Dev",
+  "name": "Elohim Forge - Codespaces",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
   },
-  "postCreateCommand": "pip install -r requirements.txt 2>/dev/null || true",
-  "forwardPorts": [8000, 8080],
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -e ./cli && npm install",
+  "forwardPorts": [3000, 8000, 8080],
   "portsAttributes": {
-    "8000": { "label": "FastAPI", "onAutoForward": "notify" }
+    "3000": {
+      "label": "Game preview",
+      "onAutoForward": "notify"
+    },
+    "8000": {
+      "label": "FastAPI or MCP",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Static preview",
+      "onAutoForward": "silent"
+    }
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-python.black-formatter",
+        "ms-python.ruff",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
         "GitHub.copilot",
-        "ms-toolsai.jupyter"
+        "GitHub.copilot-chat",
+        "GitHub.vscode-github-actions"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.testing.pytestEnabled": true,
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
   }
