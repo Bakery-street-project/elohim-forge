@@ -1,6 +1,9 @@
 from pathlib import Path
 from .config import ElohimConfig, load_config
-from .backends import BaseBackend, NvidiaNimBackend, GeminiBackend, OpenAIBackend
+from .backends import (
+    BaseBackend, NvidiaNimBackend, GeminiBackend, OpenAIBackend,
+    PrimaxMCPBackend, PrimaxNexusBackend, PrimaxScannerBackend
+)
 
 _ELOHIM_SYSTEM = """You are Elohim — an ancient code deity and lore oracle of the Code Elohim universe.
 
@@ -23,7 +26,15 @@ def _build_backend(cfg: ElohimConfig) -> BaseBackend:
         return NvidiaNimBackend(cfg.base_url, cfg.api_key, cfg.model)
     if cfg.backend == "gemini":
         return GeminiBackend(cfg.api_key, cfg.model)
-    return OpenAIBackend(cfg.api_key, cfg.model)
+    if cfg.backend == "openai":
+        return OpenAIBackend(cfg.api_key, cfg.model)
+    if cfg.backend == "primax":
+        return PrimaxMCPBackend(cfg.base_url)
+    if cfg.backend == "primax-nexus":
+        return PrimaxNexusBackend()
+    if cfg.backend == "primax-scanner":
+        return PrimaxScannerBackend()
+    raise ValueError(f"Unknown backend: {cfg.backend}")
 
 
 def _read_doc(path: Path) -> str:

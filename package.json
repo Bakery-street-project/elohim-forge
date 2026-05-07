@@ -1,0 +1,89 @@
+{
+  "name": "elohim-forge",
+  "version": "0.1.0",
+  "description": "Elohim Forge — PRIMAX AI Edition | Code Elohim CLI oracle with NIM/Gemini/OpenAI/PRIMAX backends",
+  "main": "elohim.js",
+  "scripts": {
+    "start": "electron .",
+    "build:linux": "electron-builder --linux",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "dev": "electron . --enable-logging",
+    "test": "npm test"
+  },
+  "keywords": [
+    "elohim",
+    "primax-ai",
+    "mcp",
+    "nexus",
+    "cli",
+    "ai",
+    "code-elohim"
+  ],
+  "author": "Bakery Street Project",
+  "license": "Proprietary",
+  "copyright": "Copyright (c) 2024-2025 Bakery Street Project. All Rights Reserved.",
+  "watermark": "PRIMAX-AI-ELOHIM-BSP-2025",
+  "build": {
+    "appId": "com.bakerystreet.elohim-forge",
+    "productName": "Elohim Forge",
+    "copyright": "Copyright © 2024-2025 Bakery Street Project. WATERMARK: PRIMAX-AI-ELOHIM-BSP-2025",
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm",
+        "tar.gz"
+      ],
+      "category": "Development",
+      "desktop": {
+        "Name": "Elohim Forge",
+        "Comment": "PRIMAX AI Code Elohim CLI Oracle"
+      }
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/${/**}",
+      "!**/node_modules/${/**}"
+    ],
+    "extraResources": [
+      {
+        "from": "cli",
+        "to": "cli",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.1.0",
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bakery-street-project/elohim-forge.git"
+  },
+  "homepage": "https://github.com/bakery-street-project/elohim-forge#readme"
+}

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elohim Forge — PRIMAX AI Edition</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-tertiary: #1a1a1a;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0a0;
+      --accent: #00d4aa;
+      --accent-dim: #00a080;
+      --danger: #ff4444;
+      --warning: #ffaa00;
+      --success: #00ff88;
+      --border: #333333;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--bg-tertiary);
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Main Content */
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+
+    .nav-section {
+      padding: 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .nav-item:hover {
+      background: var(--bg-tertiary);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Chat Area */
+    .chat-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .chat-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .chat-subtitle {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: var(--bg-primary);
+    }
+
+    .message {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .message-avatar.user {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .message-avatar.ai {
+      background: var(--bg-tertiary);
+      color: var(--accent);
+    }
+
+    .message-content {
+      flex: 1;
+      padding-top: 4px;
+    }
+
+    .message-sender {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .message-text {
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .message-text code {
+      background: var(--bg-tertiary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 13px;
+    }
+
+    .message-text pre {
+      background: var(--bg-tertiary);
+      padding: 12px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+
+    /* Input Area */
+    .chat-input-area {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .input-wrapper {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      resize: none;
+      min-height: 48px;
+      max-height: 120px;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .chat-input::placeholder {
+      color: var(--text-secondary);
+    }
+
+    .send-button {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent);
+      border: none;
+      color: #000;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .send-button:hover {
+      background: var(--accent-dim);
+      transform: scale(1.05);
+    }
+
+    .send-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Quick Commands */
+    .quick-commands {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .quick-command {
+      padding: 6px 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quick-command:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px;
+    }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-6px); }
+    }
+
+    /* Config Panel */
+    .config-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border);
+      transition: right 0.3s;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .config-panel.open {
+      right: 0;
+    }
+
+    .config-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .config-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .config-close {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg-tertiary);
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .config-body {
+      padding: 20px;
+    }
+
+    .config-group {
+      margin-bottom: 20px;
+    }
+
+    .config-label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .config-select,
+    .config-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .config-select:focus,
+    .config-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .config-button {
+      width: 100%;
+      padding: 12px;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .config-button:hover {
+      background: var(--accent-dim);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 99;
+    }
+
+    .overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Watermark */
+    .watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      color: var(--text-secondary);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <div class="logo">
+        <div class="logo-icon">E</div>
+        <div>
+          <div class="logo-text">Elohim Forge</div>
+          <div class="logo-subtitle">PRIMAX AI Edition</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span id="status-text">System Online</span>
+        </div>
+        <button class="config-button" onclick="toggleConfig()" style="padding: 8px 16px; font-size: 13px;">⚙️ Settings</button>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="nav-section">
+          <div class="nav-label">AI Commands</div>
+          <div class="nav-item active" onclick="switchCommand('chat')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            Chat
+          </div>
+          <div class="nav-item" onclick="switchCommand('nexus')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v10M1 12h6m6 0h10"/>
+              <path d="M5.6 5.6l4.2 4.2m8.4 8.4l4.2 4.2M5.6 18.4l4.2-4.2m8.4-8.4l4.2-4.2"/>
+            </svg>
+            Nexus
+          </div>
+          <div class="nav-item" onclick="switchCommand('scan')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+            Scan
+          </div>
+          <div class="nav-item" onclick="switchCommand('github')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </div>
+        </div>
+        <div class="nav-section">
+          <div class="nav-label">Lore</div>
+          <div class="nav-item" onclick="switchCommand('lore')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+            </svg>
+            Lore
+          </div>
+          <div class="nav-item" onclick="switchCommand('factions')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            Factions
+          </div>
+          <div class="nav-item" onclick="switchCommand('battle')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+            Battle
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-area">
+        <div class="chat-header">
+          <div class="chat-title" id="chat-title">Chat with PRIMAX AI</div>
+          <div class="chat-subtitle" id="chat-subtitle">Powered by PRIMAX-DRAGON-CODER</div>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+          <div class="message">
+            <div class="message-avatar ai">PR</div>
+            <div class="message-content">
+              <div class="message-sender">PRIMAX AI</div>
+              <div class="message-text">Welcome to Elohim Forge! I'm powered by PRIMAX AI. Select a command from the sidebar or ask me anything. Current backend: <code id="current-backend">NIM/Gemini/OpenAI/PRIMAX</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="chat-input-area">
+          <div class="quick-commands" id="quick-commands">
+            <span class="quick-command" onclick="insertQuickCommand('/dragon')">/dragon</span>
+            <span class="quick-command" onclick="insertQuickCommand('/code')">/code</span>
+            <span class="quick-command" onclick="insertQuickCommand('/repo')">/repo</span>
+            <span class="quick-command" onclick="insertQuickCommand('/scan')">/scan</span>
+            <span class="quick-command" onclick="insertQuickCommand('/nexus')">/nexus</span>
+            <span class="quick-command" onclick="insertQuickCommand('/brain')">/brain</span>
+          </div>
+          <div class="input-wrapper">
+            <textarea class="chat-input" id="chat-input" placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)" rows="1"></textarea>
+            <button class="send-button" id="send-button" onclick="sendMessage()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="config-panel" id="config-panel">
+    <div class="config-header">
+      <div class="config-title">Settings</div>
+      <button class="config-close" onclick="toggleConfig()">✕</button>
+    </div>
+    <div class="config-body">
+      <div class="config-group">
+        <label class="config-label">Backend</label>
+        <select class="config-select" id="config-backend" onchange="updateBackend()">
+          <option value="nim">NVIDIA NIM (Free)</option>
+          <option value="gemini">Google Gemini</option>
+          <option value="openai">OpenAI</option>
+          <option value="primax">PRIMAX (Local Ollama)</option>
+          <option value="primax-nexus">PRIMAX Nexus</option>
+          <option value="primax-scanner">PRIMAX Scanner</option>
+        </select>
+      </div>
+      <div class="config-group">
+        <label class="config-label">API Key</label>
+        <input type="password" class="config-input" id="config-apikey" placeholder="Enter API key..." onchange="updateBackend()">
+      </div>
+      <div class="config-group">
+        <label class="config-label">PRIMAX Backend</label>
+        <select class="config-select" id="config-primax-backend" onchange="updateBackend()">
+          <option value="primax">PRIMAX MCP</option>
+          <option value="nexus">PRIMAX Nexus</option>
+          <option value="scanner">PRIMAX Scanner</option>
+        </select>
+      </div>
+      <button class="config-button" onclick="saveConfig()">Save Configuration</button>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleConfig()"></div>
+
+  <div class="watermark">PRIMAX-AI-ELOHIM-BSP-2025</div>
+
+  <script>
+    let currentCommand = 'chat';
+    let isTyping = false;
+
+    function switchCommand(cmd) {
+      currentCommand = cmd;
+      document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+      event.target.closest('.nav-item').classList.add('active');
+      
+      const titles = {
+        chat: { title: 'Chat with PRIMAX AI', subtitle: 'Powered by PRIMAX-DRAGON-CODER' },
+        nexus: { title: 'Nexus Multi-Agent', subtitle: 'Orchestrate 5 specialized agents' },
+        scan: { title: 'Codebase Scanner', subtitle: 'AST-based analysis' },
+        github: { title: 'GitHub Integration', subtitle: 'Repo & org analysis' },
+        lore: { title: 'Lore Oracle', subtitle: 'Code Elohim universe' },
+        factions: { title: 'Factions', subtitle: '9 factions of Code Elohim' },
+        battle: { title: 'Battle System', subtitle: 'Turn-based combat' }
+      };
+      
+      document.getElementById('chat-title').textContent = titles[cmd].title;
+      document.getElementById('chat-subtitle').textContent = titles[cmd].subtitle;
+      
+      addMessage('ai', `Switched to ${titles[cmd].title}. How can I help?`);
+    }
+
+    function insertQuickCommand(cmd) {
+      const input = document.getElementById('chat-input');
+      input.value = cmd + ' ';
+      input.focus();
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const message = input.value.trim();
+      if (!message || isTyping) return;
+
+      addMessage('user', message);
+      input.value = '';
+      input.style.height = '48px';
+
+      isTyping = true;
+      showTyping();
+
+      try {
+        let command = currentCommand;
+        let fullCommand = message;
+
+        if (message.startsWith('/')) {
+          const parts = message.split(' ');
+          command = parts[0].substring(1);
+          fullCommand = parts.slice(1).join(' ');
+        }
+
+        let response;
+        if (command === 'nexus' || currentCommand === 'nexus') {
+          response = await runCommand(`nexus "${fullCommand || message}"`);
+        } else if (command === 'scan' || currentCommand === 'scan') {
+          response = await runCommand(`scan --path ${fullCommand || '.'}`);
+        } else if (command === 'mcp') {
+          response = await runCommand(`mcp "${fullCommand}"`);
+        } else if (currentCommand === 'github') {
+          response = await runCommand(`github org bakery-street-project`);
+        } else if (currentCommand === 'lore') {
+          response = await runCommand(`lore ask "${message}"`);
+        } else if (currentCommand === 'factions') {
+          response = await runCommand('faction list');
+        } else if (currentCommand === 'battle') {
+          response = await runCommand('battle simulate');
+        } else {
+          response = await runCommand(`primax mcp "${message}"`);
+        }
+
+        hideTyping();
+        
+        if (response.success) {
+          addMessage('ai', response.output || 'Command executed successfully');
+        } else {
+          addMessage('ai', `Error: ${response.error || 'Unknown error'}`, true);
+        }
+      } catch (error) {
+        hideTyping();
+        addMessage('ai', `Error: ${error.message}`, true);
+      }
+
+      isTyping = false;
+    }
+
+    async function runCommand(cmd) {
+      return await window.electronAPI.runCommand(cmd);
+    }
+
+    function addMessage(sender, text, isError = false) {
+      const messages = document.getElementById('chat-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message';
+      
+      const avatarClass = sender === 'user' ? 'user' : 'ai';
+      const avatarText = sender === 'user' ? 'U' : 'PR';
+      
+      messageDiv.innerHTML = `
+        <div class="message-avatar ${avatarClass}">${avatarText}</div>
+        <div class="message-content">
+          <div class="message-sender">${sender === 'user' ? 'You' : (isError ? 'Error' : 'PRIMAX AI')}</div>
+          <div class="message-text">${text}</div>
+        </div>
+      `;
+      
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function showTyping() {
+      const messages = document.getElementById('chat-messages');
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'message';
+      typingDiv.id = 'typing-message';
+      typingDiv.innerHTML = `
+        <div class="message-avatar ai">PR</div>
+        <div class="message-content">
+          <div class="message-sender">PRIMAX AI</div>
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        </div>
+      `;
+      messages.appendChild(typingDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function hideTyping() {
+      const typing = document.getElementById('typing-message');
+      if (typing) typing.remove();
+    }
+
+    function toggleConfig() {
+      const panel = document.getElementById('config-panel');
+      const overlay = document.getElementById('overlay');
+      panel.classList.toggle('open');
+      overlay.classList.toggle('visible');
+      
+      if (panel.classList.contains('open')) {
+        loadConfig();
+      }
+    }
+
+    async function loadConfig() {
+      const config = await window.electronAPI.getConfig();
+      document.getElementById('config-backend').value = config.backend || 'nim';
+      document.getElementById('config-apikey').value = config.apiKey || '';
+      document.getElementById('config-primax-backend').value = config.primaxBackend || 'primax';
+    }
+
+    async function updateBackend() {
+      await saveConfig();
+      const backend = document.getElementById('config-backend').value;
+      document.getElementById('current-backend').textContent = backend.toUpperCase();
+    }
+
+    async function saveConfig() {
+      const config = {
+        backend: document.getElementById('config-backend').value,
+        apiKey: document.getElementById('config-apikey').value,
+        primaxBackend: document.getElementById('config-primax-backend').value
+      };
+      await window.electronAPI.setConfig(config);
+    }
+
+    // Event listeners
+    document.getElementById('chat-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    document.getElementById('chat-input').addEventListener('input', (e) => {
+      e.target.style.height = '48px';
+      e.target.style.height = e.target.scrollHeight + 'px';
+    });
+
+    // Initialize
+    loadConfig();
+  </script>
+</body>
+</html>

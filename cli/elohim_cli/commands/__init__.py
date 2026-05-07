@@ -3,5 +3,6 @@ from .factions import faction
 from .shards import shards
 from .tools import tools
 from .forge import forge
+from .battle import battle
 
-__all__ = ["lore", "faction", "shards", "tools", "forge"]
+__all__ = ["lore", "faction", "shards", "tools", "forge", "battle"]
