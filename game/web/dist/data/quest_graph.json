@@ -1,0 +1,158 @@
+{
+  "meta": {
+    "description": "Quest dependency graph for Elohim Shards beginner progression",
+    "initial_quest": "mq_first_cast",
+    "first_shard_quest": "sq_ossuary_market_shard_compass"
+  },
+  "quests": {
+    "mq_first_cast": {
+      "id": "mq_first_cast",
+      "type": "main",
+      "title": "Your First Spell",
+      "description": "Cast your first shard to prove you walk among the Elohim",
+      "npc": "scripting_sage",
+      "next_quests": [
+        "mq_faction_choice",
+        "sq_ossuary_market_shard_compass"
+      ],
+      "rewards": {
+        "xp": 100,
+        "gold": 50
+      }
+    },
+    "mq_faction_choice": {
+      "id": "mq_faction_choice",
+      "type": "main",
+      "title": "Pledge to a Faction",
+      "description": "Choose which of the Nine Factions will have your allegiance",
+      "npc": "memory_priest",
+      "prereqs": [
+        "mq_first_cast"
+      ],
+      "next_quests": [
+        "sq_ossuary_market_shard_compass",
+        "mq_first_arena_battle"
+      ],
+      "rewards": {
+        "xp": 250,
+        "gold": 150
+      }
+    },
+    "sq_ossuary_market_shard_compass": {
+      "id": "sq_ossuary_market_shard_compass",
+      "type": "side",
+      "title": "The Ossuary Market Shard Compass",
+      "description": "Seek the Shard Compass trader in the Ossuary Market",
+      "npc": "market_trader",
+      "prereqs": [
+        "mq_first_cast"
+      ],
+      "next_quests": [
+        "sq_first_shard_hunt"
+      ],
+      "rewards": {
+        "xp": 150
+      }
+    },
+    "sq_first_shard_hunt": {
+      "id": "sq_first_shard_hunt",
+      "type": "side",
+      "title": "First Shard Hunt",
+      "description": "Use your Shard Compass to locate and claim your first real shard",
+      "npc": "tracker_npc",
+      "prereqs": [
+        "sq_ossuary_market_shard_compass"
+      ],
+      "next_quests": [
+        "mq_first_arena_battle"
+      ],
+      "rewards": {
+        "xp": 300,
+        "gold": 200
+      }
+    },
+    "mq_first_arena_battle": {
+      "id": "mq_first_arena_battle",
+      "type": "main",
+      "title": "Prove Yourself in Battle",
+      "description": "Face a faction challenger in the arena to earn prestige",
+      "npc": "arena_master",
+      "prereqs": [
+        "mq_faction_choice"
+      ],
+      "next_quests": [
+        "mq_weekly_shard_event"
+      ],
+      "rewards": {
+        "xp": 400,
+        "gold": 300
+      }
+    },
+    "mq_weekly_shard_event": {
+      "id": "mq_weekly_shard_event",
+      "type": "main",
+      "title": "Join the Sunday Shard Wars",
+      "description": "A new shard manifests! Compete with other factions to claim it",
+      "npc": "arena_master",
+      "prereqs": [
+        "mq_first_arena_battle"
+      ],
+      "recurring": true,
+      "rewards": {
+        "xp": 500,
+        "gold": 500
+      }
+    }
+  },
+  "flows": {
+    "beginner_path": {
+      "title": "Beginner to Initiate",
+      "steps": [
+        "mq_first_cast",
+        "mq_faction_choice",
+        "sq_ossuary_market_shard_compass",
+        "sq_first_shard_hunt",
+        "mq_first_arena_battle",
+        "mq_weekly_shard_event"
+      ],
+      "estimated_time_minutes": 30
+    }
+  },
+  "npc_locations": {
+    "scripting_sage": {
+      "location": "Archive Tower",
+      "coordinates": [
+        50,
+        50
+      ]
+    },
+    "memory_priest": {
+      "location": "Temple of Origin",
+      "coordinates": [
+        75,
+        75
+      ]
+    },
+    "market_trader": {
+      "location": "Ossuary Market",
+      "coordinates": [
+        30,
+        80
+      ]
+    },
+    "arena_master": {
+      "location": "Combat Arena",
+      "coordinates": [
+        60,
+        20
+      ]
+    }
+  },
+  "_metadata": {
+    "watermark": "PRIMAX-AI-ELOHIM-BSP-2025",
+    "copyright": "\u00a9 2025 Kiliaan Vanvoorden / Bakery Street Project",
+    "license": "CC BY 4.0 (content) | MIT (code)",
+    "repository": "https://github.com/BoozeLee/elohim-forge",
+    "note": "Do not remove watermark or copyright information"
+  }
+}

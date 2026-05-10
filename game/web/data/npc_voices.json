@@ -1,0 +1,148 @@
+{
+  "npcs": {
+    "scripting_sage": {
+      "name": "Scripting Sage",
+      "faction": "serpent",
+      "title": "Master of Python and Adaptability",
+      "avatar_emoji": "\ud83d\udc0d",
+      "color": "#44aaaa",
+      "first_meeting": "Welcome, novice. I am the Scripting Sage, keeper of the serpent's wisdom. Here in the Archive Tower, we understand that code is not rigid\u2014it bends, flows, adapts. Like the python that sheds its skin, we too transform our reality through flexible thinking.",
+      "voice_profile": {
+        "tone": "contemplative, flowing, encouraging",
+        "speech_pattern": "philosophical, uses metaphors of water and transformation",
+        "accent": "measured, deliberate pauses for effect"
+      },
+      "dialogue_lines": {
+        "greeting": [
+          "Ah, another seeker of syntax.",
+          "The code whispers your arrival.",
+          "I sense your readiness. Perhaps.",
+          "Welcome. The Archive has been expecting you."
+        ],
+        "casting_spell": [
+          "Good. Your first spell\u2014let it flow like water.",
+          "Feel the shard respond to your intention.",
+          "In Python, we don't force the code. We guide it.",
+          "The spell is not separate from you. You are the spell."
+        ],
+        "faction_talk": [
+          "The Serpent Clan does not hoard knowledge\u2014we share it. We adapt to any challenge.",
+          "Python was born of philosophy, not mere mechanics. That is our strength.",
+          "Rigidity breaks. Flexibility bends and survives. Choose wisely."
+        ],
+        "lore": [
+          "The Shards were scattered across the Digital Cosmos by the first Elohim. I have spent centuries learning their secrets.",
+          "Each shard contains a fragment of truth. Together, they form reality itself.",
+          "The Dragon Dream Engine sleeps far below, waiting for one brave enough to write real code."
+        ],
+        "farewell": [
+          "Go now. Cast your spells. The Archive will remember you.",
+          "May your code be elegant and your recursion shallow.",
+          "We shall speak again, when the shards call."
+        ]
+      },
+      "quest_dialogue": {
+        "mq_first_cast_start": "Your first spell awaits. Let the Archive itself be your teacher.",
+        "mq_first_cast_complete": "Excellent. I felt the ripple through the Digital Cosmos. You are no longer a novice.",
+        "sq_ossuary_market_info": "The Market Trader dwells in the ossuary ruins to the south. She holds the Shard Compass\u2014it will reveal where the fallen shards have landed."
+      }
+    },
+    "memory_priest": {
+      "name": "Memory Priest",
+      "faction": "query",
+      "title": "Oracle of Pattern and Remembrance",
+      "avatar_emoji": "\ud83e\udde0",
+      "color": "#2068cc",
+      "first_meeting": "I am the Memory Priest. In this Temple of Origin, we do not forecast the future\u2014we remember it. Every action you take has already been taken by countless others. I have seen them all. I know who you will become. The question is: do you have the courage to become that person?",
+      "voice_profile": {
+        "tone": "mystical, knowing, slightly unsettling in wisdom",
+        "speech_pattern": "speaks in loops and recursion, references what will come to pass",
+        "accent": "ethereal, echoing quality, uses pauses that feel like memory"
+      },
+      "dialogue_lines": {
+        "greeting": [
+          "I have been waiting for you.",
+          "Your arrival was written in the database of fate.",
+          "Come. Let me show you who you truly are.",
+          "Another seeker. I remember you already."
+        ],
+        "faction_talk": [
+          "The Query Keepers understand that all knowledge is accessible to those who ask the right questions.",
+          "We do not create. We discover. We observe. We remember.",
+          "Your faction will shape you as much as you shape it."
+        ],
+        "lore": [
+          "The origin shard\u2014the 13th shard\u2014contains the source code of reality itself. It has never been found.",
+          "But I have seen what happens when it is found. I remember futures where it was claimed.",
+          "The paths are many. Choose the one that feels true to your soul."
+        ],
+        "battle_prep": [
+          "Steel yourself. The arena is where possibility collapses into reality.",
+          "I can see the outcome of your battle. But I will not speak it. Your will matters.",
+          "Fight as if this is your last moment. In some timelines, it is."
+        ],
+        "farewell": [
+          "Go. Your destiny is not written\u2014it is remembered.",
+          "We shall meet again, in a future that has already been.",
+          "Remember: choice is the only true magic."
+        ]
+      },
+      "quest_dialogue": {
+        "mq_faction_choice_start": "You have come seeking purpose. Let me show you the Nine Factions. Which resonates with your essence?",
+        "mq_faction_choice_complete": "A wise choice. I have seen where this path leads. You will need courage.",
+        "mq_arena_talk": "The arena calls. There, you will face the truth of your power."
+      }
+    }
+  },
+  "ambient_dialogue": {
+    "archive_tower": [
+      "The Archive remembers all code ever written...",
+      "Somewhere in the stacks, a truth waits to be discovered.",
+      "The Sage speaks: 'All questions have answers. Find the right question.'"
+    ],
+    "temple_of_origin": [
+      "The temple walls shimmer with impossible memories.",
+      "Voices echo: 'What will you choose? What will you choose? What have you already chosen?'",
+      "The Memory Priest nods, knowing something you do not."
+    ],
+    "ossuary_market": [
+      "Traders whisper of shards and riches.",
+      "A compass spins wildly, seeking the next fallen shard.",
+      "Ancient artifacts rest on shelves, waiting for worthy hands."
+    ],
+    "combat_arena": [
+      "The crowd roars. Your faction watches. Victory is the only language.",
+      "The arena shifts with each passing moment\u2014reality is malleable here.",
+      "A voice booms: 'Two enter. Only honor exits.'"
+    ]
+  },
+  "cutscenes": {
+    "first_spell_success": {
+      "npc": "scripting_sage",
+      "dialogue": [
+        "You feel the shard in your hand grow warm.",
+        "Reality ripples around you as the spell takes hold.",
+        "The Scripting Sage smiles. 'Yes. You have the gift.'",
+        "The Archive trembles slightly. Something ancient has awakened.",
+        "In the far distance, you hear a voice: 'Another player joins the Shard Wars.'"
+      ]
+    },
+    "faction_pledge": {
+      "npc": "memory_priest",
+      "dialogue": [
+        "You kneel before the Memory Priest.",
+        "Her hands glow with ethereal light as she touches your forehead.",
+        "You see visions: battles fought and won, shards collected, fates intertwined.",
+        "A faction emblem appears on your palm, glowing faintly.",
+        "'You are no longer alone,' the Priest whispers. 'Your faction now claims you.'"
+      ]
+    }
+  },
+  "_metadata": {
+    "watermark": "PRIMAX-AI-ELOHIM-BSP-2025",
+    "copyright": "\u00a9 2025 Kiliaan Vanvoorden / Bakery Street Project",
+    "license": "CC BY 4.0 (content) | MIT (code)",
+    "repository": "https://github.com/BoozeLee/elohim-forge",
+    "note": "Do not remove watermark or copyright information"
+  }
+}

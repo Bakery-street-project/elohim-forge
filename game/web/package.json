@@ -1,0 +1,30 @@
+{
+  "name": "elohim-shards-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Elohim Shards — multi-faction AI combat game",
+  "author": "Kiliaan Vanvoorden <@BoozeLee>",
+  "license": "MIT",
+  "copyright": "© 2025 Bakery Street Project",
+  "watermark": "PRIMAX-AI-ELOHIM-BSP-2025",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BoozeLee/elohim-forge"
+  },
+  "homepage": "https://github.com/BoozeLee/elohim-forge#elohim-shards",
+  "keywords": [
+    "game",
+    "rpg",
+    "ai",
+    "nft",
+    "web",
+    "canvas",
+    "elohim",
+    "shards"
+  ],
+  "scripts": {
+    "build": "if [ -f dist/index.wasm ]; then echo 'Godot web export found — using existing build'; else mkdir -p dist && cp index.html dist/ && cp -r src dist/ 2>/dev/null; mkdir -p dist/data && cp -r data/*.json dist/data 2>/dev/null; echo 'Static fallback build complete'; fi",
+    "start": "echo 'Open index.html in a browser'"
+  }
+}
+

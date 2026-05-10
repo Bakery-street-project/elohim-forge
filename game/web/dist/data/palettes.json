@@ -1,0 +1,110 @@
+{
+  "meta": {
+    "aesthetic": "kinetic neon-sacral / overstimulated arcade mysticism",
+    "theme": "Digital Cosmos \u2014 code as literal reality",
+    "intended_use": "UI, faction colors, shard effects, status indicators"
+  },
+  "primary": {
+    "neon_lime": "#44ff88",
+    "neon_magenta": "#ff44cc",
+    "neon_cyan": "#00ffff",
+    "neon_orange": "#ff8800",
+    "neon_purple": "#dd44ff",
+    "neon_pink": "#ff0088",
+    "neon_blue": "#0088ff"
+  },
+  "factions": {
+    "spark": {
+      "primary": "#ff6600",
+      "secondary": "#ffaa44",
+      "glow": "#ff8800"
+    },
+    "serpent": {
+      "primary": "#44aaaa",
+      "secondary": "#00dddd",
+      "glow": "#00ffff"
+    },
+    "empire": {
+      "primary": "#3a6aaa",
+      "secondary": "#5a8aaa",
+      "glow": "#6699cc"
+    },
+    "forge": {
+      "primary": "#cc4433",
+      "secondary": "#ff6655",
+      "glow": "#ff4444"
+    },
+    "weavers": {
+      "primary": "#33ff33",
+      "secondary": "#55ff55",
+      "glow": "#44ff44"
+    },
+    "iron": {
+      "primary": "#5a8a9c",
+      "secondary": "#7aaa9c",
+      "glow": "#88ccaa"
+    },
+    "corps": {
+      "primary": "#0acccc",
+      "secondary": "#22eeee",
+      "glow": "#00ffff"
+    },
+    "query": {
+      "primary": "#2068cc",
+      "secondary": "#4488ff",
+      "glow": "#3377ff"
+    },
+    "mystics": {
+      "primary": "#664a96",
+      "secondary": "#885acc",
+      "glow": "#9966ff"
+    }
+  },
+  "shards": {
+    "legendary": {
+      "glow": "#ffff00",
+      "bg": "rgba(255, 255, 0, 0.1)",
+      "border": "#ffff00"
+    },
+    "epic": {
+      "glow": "#ff6600",
+      "bg": "rgba(255, 102, 0, 0.1)",
+      "border": "#ff6600"
+    },
+    "rare": {
+      "glow": "#44ff88",
+      "bg": "rgba(68, 255, 136, 0.1)",
+      "border": "#44ff88"
+    },
+    "uncommon": {
+      "glow": "#0088ff",
+      "bg": "rgba(0, 136, 255, 0.1)",
+      "border": "#0088ff"
+    },
+    "mythic": {
+      "glow": "#ff00ff",
+      "bg": "rgba(255, 0, 255, 0.2)",
+      "border": "#ff00ff"
+    }
+  },
+  "ui": {
+    "background_dark": "#0a0e1a",
+    "background_darker": "#050709",
+    "panel_bg": "rgba(15, 20, 40, 0.8)",
+    "border_active": "#44ff88",
+    "border_inactive": "rgba(68, 255, 136, 0.2)",
+    "text_primary": "#ffffff",
+    "text_secondary": "#aaaaaa",
+    "text_dim": "#555555",
+    "error": "#ff3344",
+    "success": "#44ff88",
+    "warning": "#ffaa00"
+  },
+  "_metadata": {
+    "watermark": "PRIMAX-AI-ELOHIM-BSP-2025",
+    "copyright": "\u00a9 2025 Kiliaan Vanvoorden / Bakery Street Project",
+    "license": "CC BY 4.0 (content) | MIT (code)",
+    "repository": "https://github.com/BoozeLee/elohim-forge",
+    "note": "Do not remove watermark or copyright information"
+  }
+}

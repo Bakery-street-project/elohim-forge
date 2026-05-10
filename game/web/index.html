@@ -1,0 +1,80 @@
+<!--
+  ELOHIM SHARDS — Multi-faction AI combat game
+  Copyright (c) 2025 Kiliaan Vanvoorden / Bakery Street Project
+  License: MIT (code) + CC BY 4.0 (content)
+  Watermark: PRIMAX-AI-ELOHIM-BSP-2025
+  Repository: https://github.com/BoozeLee/elohim-forge
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Kiliaan Vanvoorden">
+  <meta name="copyright" content="Copyright (c) 2025 Bakery Street Project">
+  <meta name="license" content="MIT (code) CC BY 4.0 (content)">
+  <title>Elohim Shards</title>
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>💎</text></svg>">
+</head>
+<body>
+  <div id="container">
+    <canvas id="bg"></canvas>
+    <main>
+      <header>
+        <h1>ELOHIM SHARDS</h1>
+        <p class="subtitle">A kinetic neon-sacral action RPG</p>
+      </header>
+
+      <section id="factions">
+        <h2>Nine Factions</h2>
+        <div class="faction-grid">
+          <div class="faction-card" data-color="#ff6600"><span class="icon">⚡</span>Spark</div>
+          <div class="faction-card" data-color="#44aaaa"><span class="icon">🐍</span>Serpent</div>
+          <div class="faction-card" data-color="#3a6aaa"><span class="icon">🏰</span>Empire</div>
+          <div class="faction-card" data-color="#cc4433"><span class="icon">⚒️</span>Forge</div>
+          <div class="faction-card" data-color="#33ff33"><span class="icon">🕸️</span>Weavers</div>
+          <div class="faction-card" data-color="#5a8a9c"><span class="icon">🛡️</span>Iron</div>
+          <div class="faction-card" data-color="#0acccc"><span class="icon">⚙️</span>Corps</div>
+          <div class="faction-card" data-color="#2068cc"><span class="icon">🔍</span>Query</div>
+          <div class="faction-card" data-color="#664a96"><span class="icon">🔮</span>Mystics</div>
+        </div>
+      </section>
+
+      <section id="shards">
+        <h2>The 13 Shards of Syntax</h2>
+        <div class="shard-list" id="shard-container"></div>
+      </section>
+
+      <section id="quests">
+        <h2>Beginner Quests</h2>
+        <div id="quest-container"></div>
+      </section>
+
+      <section id="npc-section">
+        <h2>Voices from the Digital Cosmos</h2>
+        <div id="npc-chat"></div>
+      </section>
+
+      <section id="status">
+        <div class="status-panel">
+          <span id="glitch-text"></span>
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          PRIMAX-AI-ELOHIM-BSP-2025 &nbsp;|&nbsp; © 2025 Kiliaan Vanvoorden / BSP
+          <br>
+          <small>
+            <a href="ATTRIBUTION.md" style="color: var(--dim); text-decoration: none;">License & Attribution</a> | 
+            <a href="../LICENSE" style="color: var(--dim); text-decoration: none;">Full License</a>
+          </small>
+        </p>
+      </footer>
+    </main>
+  </div>
+  <script src="src/main.js"></script>
+</body>
+</html>
