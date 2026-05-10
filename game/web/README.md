@@ -105,12 +105,24 @@ Want to adapt or remix Elohim Shards?
 3. **Credit the original author:** "Based on Elohim Shards by Kiliaan Vanvoorden (CC BY 4.0)"
 4. **Open a PR or share your work**
 
+## 💰 Support
+
+Support the project development:
+
+**[🎯 Sponsor via Bakery Street Project](https://github.com/sponsors/Bakery-street-project/sponsorships?sponsor=BoozeLee&tier_id=598784&preview=false)**
+
+Your support helps fund:
+- Continued game development
+- New features and content
+- Open-source infrastructure
+- Community projects
+
 ## 📝 Attribution
 
 **Author:** Kiliaan Vanvoorden  
 **Organization:** Bakery Street Project  
 **GitHub:** [@BoozeLee](https://github.com/BoozeLee)  
-**Sponsor:** [github.com/sponsors/BoozeLee](https://github.com/sponsors/BoozeLee)
+**Organization:** [@Bakery-street-project](https://github.com/Bakery-street-project)
 
 ## 📖 Lore & Documentation
 
@@ -121,8 +133,8 @@ Want to adapt or remix Elohim Shards?
 ## 🔗 Links
 
 - **GitHub Repository:** https://github.com/BoozeLee/elohim-forge
-- **GitHub Sponsors:** https://github.com/sponsors/BoozeLee
-- **Project Home:** https://github.com/BoozeLee
+- **GitHub Organization:** https://github.com/Bakery-street-project
+- **Support Project:** https://github.com/sponsors/Bakery-street-project/sponsorships?sponsor=BoozeLee&tier_id=598784&preview=false
 
 ## ⚖️ Legal
 
@@ -136,4 +148,4 @@ See [LICENSE](LICENSE) and [ATTRIBUTION.md](ATTRIBUTION.md) for full details.
 
 ---
 
-**Status:** ✅ Public Release | **Version:** 0.1.0 | **Updated:** 2026-05-09
+**Status:** ✅ Public Release | **Version:** 0.1.0 | **Updated:** 2026-05-10
